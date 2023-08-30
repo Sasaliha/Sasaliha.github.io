@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Snake Game</title>
     <style>
+
+        
        *{
         padding: 0;
         margin:0;
@@ -69,6 +71,24 @@
     </style>
 </head>
 <body>
+    <script>
+        window.onload = function() {
+            // Pop-up içeriğini oluştur
+            var popupContent = "<p>Oyunda 3 canınınz bulunmaktadır. Yılan kendi kendisini yemesi durumunda küçülmekte ve can sayısından 1 azalmaktadır. Hız her 3 elma yedikten sonra artmaktadır. can azalması durumunda ise  yılanın </p>";
+        
+            // Pop-up penceresini aç
+            var popupWindow = window.open('', 'Popup', 'width=300,height=200');
+            popupWindow.document.write(popupContent);
+        
+            // Pop-up penceresini kapatma düğmesi ekle
+            var closeButton = popupWindow.document.createElement('button');
+            closeButton.textContent = 'Kapat';
+            closeButton.addEventListener('click', function() {
+                popupWindow.close();
+            });
+            popupWindow.document.body.appendChild(closeButton);
+        };
+        </script>
   <button onclick="yeniOyun()">Yeni Oyun</button>
     <!-- canvas piksel piksel hareket eder -->
 
