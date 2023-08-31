@@ -25,9 +25,10 @@ const elmaResmi=new Image();
 elmaResmi.src='elma.png';
 
 const yilanResmi=new Image();
-yilanResmi.src='yilanbasi.png';
+yilanResmi.src='yilanbasi_asagi.png';
 
-//11
+
+
 
 class YilanParcasi{
     constructor(x,y){ 
@@ -75,8 +76,14 @@ function yilaniCiz(){
 
     // ctx.fillStyle="white"; //yılanın başını beyaz yaptık
     // ctx.fillRect(x*konum, y*konum, boyut,boyut)
+ 
 
-    ctx.drawImage(yilanResmi, x*konum, y*konum, boyut,boyut)
+    // ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.save(); // Mevcut çizim durumunu kaydetmek
+    ctx.translate(x * konum + boyut / 2, y * konum + boyut / 2); // Döndürme merkezini ayarlamak
+    ctx.rotate(Math.atan2(hareketY, hareketX)); // Yılan başını yöne göre döndürmek
+    ctx.drawImage(yilanResmi, -boyut / 2, -boyut / 2, boyut, boyut); // Döndürülmüş resmi çizmek
+    ctx.restore(); // Önceki çizim durumunu geri yüklemek
 }
 
 function elmayiCiz(){
@@ -90,32 +97,31 @@ function elmayiCiz(){
 function tusHareketleri(e){
     // console.log(e.Keycode) //bastıgım tusların bbrowserda keycodelarını yakaladım
 
-    switch (e.keyCode){
-
-        case 37: //sol tus ise
-        if(hareketX===1) return; //soldayken saa cekmeye calısırsam kod return olacak
-        hareketX=-1; //x sola gitmesini saglıyor
-        hareketY=0; // yukarı hareket 0 olsun
-        break;
-
-        case 38: //yukarı tus ise
-        if(hareketY===1) return;
-        hareketY=-1; 
-        hareketX=0;
-        break;
-
-        case 39:  //sağ tusa basıldıysa
-        if(hareketX===-1) return;
-        hareketX=1;
-        hareketY=0;
-        break;
-
-        case 40: //asagı tusa basıldıysa
-        if(hareketY===-1) return;
-        hareketY=1;
-        hareketX=0;
-        break;
-
+    switch (e.keyCode) {
+        case 37: // Sol tuşa basıldı
+            if (hareketX === 1) return;
+            hareketX = -1;
+            hareketY = 0;
+            yilanResmi.style.transform = 'rotate(180deg)';
+            break;
+        case 38: // Yukarı tuşa basıldı
+            if (hareketY === 1) return;
+            hareketY = -1;
+            hareketX = 0;
+            yilanResmi.style.transform = 'rotate(-90deg)';
+            break;
+        case 39: // Sağ tuşa basıldı
+            if (hareketX === -1) return;
+            hareketX = 1;
+            hareketY = 0;
+            yilanResmi.style.transform = 'rotate(0deg)';
+            break;
+        case 40: // Aşağı tuşa basıldı
+            if (hareketY === -1) return;
+            hareketY = 1;
+            hareketX = 0;
+            yilanResmi.style.transform = 'rotate(90deg)';
+            break;
     }
    
 }
@@ -205,7 +211,7 @@ function oyunBittiMi(){
             yilanParcalari.splice(0,index);
             yilanUzunlugu=yilanParcalari.length;
             skor=yilanUzunlugu*10;
-            hiz-=1;
+            hiz-=2;
             // oyunBitti=true;
             break;
         }
