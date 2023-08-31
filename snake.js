@@ -292,6 +292,8 @@ function handleTouchEnd(event) {
     // Dokunmatik etkinliği işledikten sonra başlangıç koordinatlarını sıfırla
     touchStartX = null;
     touchStartY = null;
+    event.preventDefault(); // Tarayıcı tarafından kaydırma işlemi engellenir
+
 }
 
 oyunuCiz();
