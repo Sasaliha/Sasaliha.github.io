@@ -4,7 +4,8 @@ const canvas  =document.getElementById("game") //idsi game olan elemente ulastı
 const ctx=canvas.getContext("2d"); //yılan oyunumuz 2d boyutlu olacak
 
 document.addEventListener("keydown", tusHareketleri);//browser üzerinde bastıgım tusları yakalayabilirim
-
+canvas.addEventListener('touchstart', handleTouchStart, false);
+canvas.addEventListener('touchmove', handleTouchMove, false);
 
 let canvasHeight= canvas.clientHeight;
 let canvasWidth=canvas.clientWidth;
@@ -21,11 +22,14 @@ let yilanParcalari=[] //parcaların x ve y konumlarını arrayda tutacagım
 let skor=0;
 let hiz=10;
 let can=3;
+let touchStartX = null;
+let touchStartY = null;
+
 const elmaResmi=new Image();
 elmaResmi.src='elma.png';
 
 const yilanResmi=new Image();
-yilanResmi.src='yilanbasi_asagi.png';
+yilanResmi.src='yilanbasi_sag.png';
 
 
 
@@ -48,11 +52,14 @@ function oyunuCiz(){
     skoruCiz();
     hiziCiz();
     canCiz();
+    
     const sonuc=oyunBittiMi();
 
     if(sonuc)
     return;// oyun bittiğinde tekrar settimeout u cagırmaması için
     setTimeout(oyunuCiz, 1000/hiz); //100ms de 1 oyunuciz
+    handleTouchStart();
+    handleTouchMove();
 }
 
 function ekraniTemizle(){
@@ -76,8 +83,8 @@ function yilaniCiz(){
 
     // ctx.fillStyle="white"; //yılanın başını beyaz yaptık
     // ctx.fillRect(x*konum, y*konum, boyut,boyut)
- 
 
+    // Yılan başını döndürerek çizmek
     // ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.save(); // Mevcut çizim durumunu kaydetmek
     ctx.translate(x * konum + boyut / 2, y * konum + boyut / 2); // Döndürme merkezini ayarlamak
@@ -102,30 +109,25 @@ function tusHareketleri(e){
             if (hareketX === 1) return;
             hareketX = -1;
             hareketY = 0;
-            yilanResmi.style.transform = 'rotate(180deg)';
             break;
         case 38: // Yukarı tuşa basıldı
             if (hareketY === 1) return;
             hareketY = -1;
             hareketX = 0;
-            yilanResmi.style.transform = 'rotate(-90deg)';
             break;
         case 39: // Sağ tuşa basıldı
             if (hareketX === -1) return;
             hareketX = 1;
             hareketY = 0;
-            yilanResmi.style.transform = 'rotate(0deg)';
             break;
         case 40: // Aşağı tuşa basıldı
             if (hareketY === -1) return;
             hareketY = 1;
             hareketX = 0;
-            yilanResmi.style.transform = 'rotate(90deg)';
             break;
-    }
    
 }
-
+}
 function yilanHareketiniGüncelle(){
     let sonucX=x+hareketX;
     let sonucY=y+hareketY;
@@ -241,6 +243,55 @@ function canCiz(){
     ctx.fillText(`⚡: ${can}`,canvasWidth-230,30);
 }
 
+
+function handleTouchStart(event) {
+    const firstTouch = event.touches[0];
+    touchStartX = firstTouch.clientX;
+    touchStartY = firstTouch.clientY;
+}
+function handleTouchMove(event) {
+    if (!touchStartX || !touchStartY) {
+        return;
+    }
+
+    const touchEndX = event.touches[0].clientX;
+    const touchEndY = event.touches[0].clientY;
+
+    const touchDiffX = touchStartX - touchEndX;
+    const touchDiffY = touchStartY - touchEndY;
+
+    if (Math.abs(touchDiffX) > Math.abs(touchDiffY)) {
+        if (touchDiffX > 0) {
+            // Sağa kaydırma
+            if (hareketX === -1) return;
+            hareketX = 1;
+            hareketY = 0;
+            yilanResmi.src = 'yilanbasi_saga.png';
+        } else {
+            // Sola kaydırma
+            if (hareketX === 1) return;
+            hareketX = -1;
+            hareketY = 0;
+            yilanResmi.src = 'yilanbasi_saga.png';
+        }
+    } else {
+        if (touchDiffY > 0) {
+            // Aşağı kaydırma
+            if (hareketY === -1) return;
+            hareketY = 1;
+            hareketX = 0;
+        } else {
+            // Yukarı kaydırma
+            if (hareketY === 1) return;
+            hareketY = -1;
+            hareketX = 0;
+        }
+    }
+
+    // Dokunmatik etkinliği işledikten sonra başlangıç koordinatlarını sıfırla
+    touchStartX = null;
+    touchStartY = null;
+}
 oyunuCiz();
 
 
