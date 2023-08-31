@@ -58,8 +58,9 @@ function oyunuCiz(){
     if(sonuc)
     return;// oyun bittiğinde tekrar settimeout u cagırmaması için
     setTimeout(oyunuCiz, 1000/hiz); //100ms de 1 oyunuciz
-    handleTouchStart();
     handleTouchMove();
+    handleTouchStart();
+    
 }
 
 function ekraniTemizle(){
