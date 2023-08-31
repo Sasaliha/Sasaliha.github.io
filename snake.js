@@ -5,7 +5,7 @@ const ctx=canvas.getContext("2d"); //yılan oyunumuz 2d boyutlu olacak
 
 document.addEventListener("keydown", tusHareketleri);//browser üzerinde bastıgım tusları yakalayabilirim
 canvas.addEventListener('touchstart', handleTouchStart, false);
-canvas.addEventListener('touchmove', handleTouchMove, false);
+canvas.addEventListener('touchend', handleTouchEnd, false);
 
 let canvasHeight= canvas.clientHeight;
 let canvasWidth=canvas.clientWidth;
@@ -58,8 +58,9 @@ function oyunuCiz(){
     if(sonuc)
     return;// oyun bittiğinde tekrar settimeout u cagırmaması için
     setTimeout(oyunuCiz, 1000/hiz); //100ms de 1 oyunuciz
-    handleTouchMove();
+    
     handleTouchStart();
+    handleTouchEnd();
     
 }
 
@@ -251,37 +252,37 @@ function handleTouchStart(event) {
     touchStartY = firstTouch.clientY;
 }
 
-function handleTouchMove(event) {
+function handleTouchEnd(event) {
     if (!touchStartX || !touchStartY) {
         return;
     }
 
-    const touchEndX = event.touches[0].clientX;
-    const touchEndY = event.touches[0].clientY;
+    const touchEndX = event.changedTouches[0].clientX;
+    const touchEndY = event.changedTouches[0].clientY;
 
     const touchDiffX = touchEndX - touchStartX;
     const touchDiffY = touchEndY - touchStartY;
 
     if (Math.abs(touchDiffX) > Math.abs(touchDiffY)) {
         if (touchDiffX > 0) {
-            // Sağa kaydırma
+            // Sağa tıklama
             if (hareketX === -1) return;
             hareketX = 1;
             hareketY = 0;
         } else {
-            // Sola kaydırma
+            // Sola tıklama
             if (hareketX === 1) return;
             hareketX = -1;
             hareketY = 0;
         }
     } else {
         if (touchDiffY > 0) {
-            // Aşağı kaydırma
+            // Aşağı tıklama
             if (hareketY === -1) return;
             hareketY = 1;
             hareketX = 0;
         } else {
-            // Yukarı kaydırma
+            // Yukarı tıklama
             if (hareketY === 1) return;
             hareketY = -1;
             hareketX = 0;
