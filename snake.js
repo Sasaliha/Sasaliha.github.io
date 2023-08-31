@@ -57,6 +57,34 @@
      if(sonuc)
      return;// oyun bittiğinde tekrar settimeout u cagırmaması için
      setTimeout(oyunuCiz, 1000/hiz); //100ms de 1 oyunuciz
+
+     cizYonOk(canvasWidth - 40, canvasHeight - 80, hareketY === -1 ? 'white' : 'gray'); // Yukarı
+    cizYonOk(canvasWidth - 40, canvasHeight - 40, hareketY === 1 ? 'white' : 'gray');  // Aşağı
+    cizYonOk(canvasWidth - 70, canvasHeight - 60, hareketX === -1 ? 'white' : 'gray'); // Sol
+    cizYonOk(canvasWidth - 10, canvasHeight - 60, hareketX === 1 ? 'white' : 'gray');  // Sağ
+
+    canvas.addEventListener('click', function(event) {
+        const mouseX = event.clientX - canvas.getBoundingClientRect().left;
+        const mouseY = event.clientY - canvas.getBoundingClientRect().top;
+    
+        if (mouseX > canvasWidth - 70 && mouseX < canvasWidth - 50 && mouseY > canvasHeight - 80 && mouseY < canvasHeight - 60) {
+            // Yukarı okuna tıklandı
+            hareketX = 0;
+            hareketY = -1;
+        } else if (mouseX > canvasWidth - 70 && mouseX < canvasWidth - 50 && mouseY > canvasHeight - 40 && mouseY < canvasHeight - 20) {
+            // Aşağı okuna tıklandı
+            hareketX = 0;
+            hareketY = 1;
+        } else if (mouseX > canvasWidth - 70 && mouseX < canvasWidth - 50 && mouseY > canvasHeight - 60 && mouseY < canvasHeight - 40) {
+            // Sol okuna tıklandı
+            hareketX = -1;
+            hareketY = 0;
+        } else if (mouseX > canvasWidth - 40 && mouseX < canvasWidth - 20 && mouseY > canvasHeight - 60 && mouseY < canvasHeight - 40) {
+            // Sağ okuna tıklandı
+            hareketX = 1;
+            hareketY = 0;
+        }
+    });
    
  }
  
@@ -240,6 +268,21 @@
      ctx.font="20px Ink Free";
      ctx.fillText(`⚡: ${can}`,canvasWidth-230,30);
  }
+ function cizYonOk(x, y, renk) {
+    ctx.beginPath();
+    ctx.strokeStyle = renk;
+    ctx.lineWidth = 5;
+
+    // Sağ ok
+    ctx.moveTo(x + 10, y);
+    ctx.lineTo(x, y + 10);
+    ctx.lineTo(x + 10, y + 20);
+    ctx.stroke();
+
+    ctx.closePath();
+}
+
+
  
  
  oyunuCiz();
