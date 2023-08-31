@@ -250,6 +250,7 @@ function handleTouchStart(event) {
     touchStartX = firstTouch.clientX;
     touchStartY = firstTouch.clientY;
 }
+
 function handleTouchMove(event) {
     if (!touchStartX || !touchStartY) {
         return;
@@ -258,8 +259,8 @@ function handleTouchMove(event) {
     const touchEndX = event.touches[0].clientX;
     const touchEndY = event.touches[0].clientY;
 
-    const touchDiffX = touchStartX - touchEndX;
-    const touchDiffY = touchStartY - touchEndY;
+    const touchDiffX = touchEndX - touchStartX;
+    const touchDiffY = touchEndY - touchStartY;
 
     if (Math.abs(touchDiffX) > Math.abs(touchDiffY)) {
         if (touchDiffX > 0) {
@@ -267,13 +268,11 @@ function handleTouchMove(event) {
             if (hareketX === -1) return;
             hareketX = 1;
             hareketY = 0;
-            yilanResmi.src = 'yilanbasi_saga.png';
         } else {
             // Sola kaydırma
             if (hareketX === 1) return;
             hareketX = -1;
             hareketY = 0;
-            yilanResmi.src = 'yilanbasi_saga.png';
         }
     } else {
         if (touchDiffY > 0) {
@@ -293,6 +292,7 @@ function handleTouchMove(event) {
     touchStartX = null;
     touchStartY = null;
 }
+
 oyunuCiz();
 
 
