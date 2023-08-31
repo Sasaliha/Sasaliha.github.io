@@ -186,7 +186,7 @@
  
          //yılanın herhangi bir parcası elmanın konumuna denk gelirse
          let elmaKonumuMüsaitMi=false; 
-         console.log(!elmaKonumuMüsaitMi)
+  
          while(!elmaKonumuMüsaitMi){ 
              
              elmaKonumuMüsaitMi=true;
