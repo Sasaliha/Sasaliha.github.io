@@ -58,7 +58,7 @@
      return;// oyun bittiğinde tekrar settimeout u cagırmaması için
      setTimeout(oyunuCiz, 1000/hiz); //100ms de 1 oyunuciz
 
-     cizYonOk(canvasWidth - 40, canvasHeight - 80, hareketY === -1 ? 'white' : 'gray'); // Yukarı
+    cizYonOk(canvasWidth - 40, canvasHeight - 80, hareketY === -1 ? 'white' : 'gray'); // Yukarı
     cizYonOk(canvasWidth - 40, canvasHeight - 40, hareketY === 1 ? 'white' : 'gray');  // Aşağı
     cizYonOk(canvasWidth - 70, canvasHeight - 60, hareketX === -1 ? 'white' : 'gray'); // Sol
     cizYonOk(canvasWidth - 10, canvasHeight - 60, hareketX === 1 ? 'white' : 'gray');  // Sağ
@@ -94,29 +94,32 @@
  }
  
  function yilaniCiz(){
-     ctx.fillStyle="rgb(221, 255, 0)"
-     for(let i of yilanParcalari){  //in indexleri alır, of degerleri alır
-     ctx.fillRect(i.x*konum, i.y*konum,boyut, boyut) 
- 
-     }
- 
-     yilanParcalari.push(new YilanParcasi(x,y)) //listeye birsey eklemek istenirse push metodu ile eklenir
- 
-     if(yilanParcalari.length>yilanUzunlugu){
-         yilanParcalari.shift();//son ekleneni siler
-     }
- 
- 
-     // ctx.fillStyle="white"; //yılanın başını beyaz yaptık
-     // ctx.fillRect(x*konum, y*konum, boyut,boyut)
- 
-     // Yılan başını döndürerek çizmek
-     // ctx.clearRect(0, 0, canvas.width, canvas.height);
-     ctx.save(); // Mevcut çizim durumunu kaydetmek
-     ctx.translate(x * konum + boyut / 2, y * konum + boyut / 2); // Döndürme merkezini ayarlamak
-     ctx.rotate(Math.atan2(hareketY, hareketX)); // Yılan başını yöne göre döndürmek
-     ctx.drawImage(yilanResmi, -boyut / 2, -boyut / 2, boyut, boyut); // Döndürülmüş resmi çizmek
-     ctx.restore(); // Önceki çizim durumunu geri yüklemek
+    ctx.fillStyle = "rgb(221, 255, 5)";
+
+    // Kuyruk parçalarını çiz
+    for (let i = 0; i < yilanParcalari.length; i++) {
+        const alpha = 1 - i * 0.05; // Saydamlık azaldıkça parça solgunlaşır
+        ctx.fillStyle = `rgba(221, 255, 0, ${alpha})`;
+        
+        // Kuyruk parçalarını basit şekillerle çiz
+        ctx.beginPath();
+        ctx.arc(yilanParcalari[i].x * konum + boyut / 2, yilanParcalari[i].y * konum + boyut / 2, boyut / 2 * (1 - i * 0.02), 0, Math.PI * 2);
+        ctx.fill();
+    }
+
+    // Baş ve kuyruk parçalarını güncelle
+    yilanParcalari.push(new YilanParcasi(x, y)); // Baş parçasını ekle
+
+    if (yilanParcalari.length > yilanUzunlugu) {
+        yilanParcalari.shift(); // En eski kuyruk parçasını sil
+    }
+
+    // Yılanın başını döndürerek çizmek
+    ctx.save();
+    ctx.translate(x * konum + boyut / 2, y * konum + boyut / 2);
+    ctx.rotate(Math.atan2(hareketY, hareketX));
+    ctx.drawImage(yilanResmi, -boyut / 2, -boyut / 2, boyut, boyut);
+    ctx.restore();
  }
  
  function elmayiCiz(){
