@@ -22,6 +22,7 @@
             align-items: flex-start;
             background-image: linear-gradient(45deg, rgba(194, 233, 221, 0.5) 1%, rgba(104, 119, 132, 0.5) 100%), linear-gradient(-45deg, #494d71 0%, rgba(217, 230, 185, 0.5) 80%);
             padding: 50px;
+            
             /* border-radius: 20px; */
             width: 700px;
 
@@ -233,6 +234,10 @@ background-color: #f00;
   background-color: #f00;
 }
 
+.information{
+    gap:5px;
+ }
+
 
 </style>
 
@@ -244,7 +249,7 @@ background-color: #f00;
     <div class="person-inf">
 <div><b><u><h2>1-Kişisel Bilgiler</h2></b></u>      
 
-    <div><br> 
+    <div class="information"><br> 
     <div>
       <label for="adiSoyadi">Adı Soyadı: </label>
       <input  maxlength="100" name="adiSoyadi" title="Adınızı ve Soyisminizi Girin" type="text"  width="150" height="20">
@@ -319,12 +324,12 @@ background-color: #f00;
             <div>
            <div class="educations"><br> 
                 <div>
-                    <label for="egitim">Üniversite Adı:</label>
-                    <input maxlength="500" name="uniAdi" title="üniversite adını giriniz: " type="text">
+                    <label for="egitim">Eğitim Kurumunun Adı:</label>
+                    <input maxlength="500" name="egitimAdi" title="eğitim kurumunun adını giriniz: " type="text">
                 </div><br>
                 <div>
-                    <label for="egitim">Fakülte/Bölüm Adı:</label>
-                    <input maxlength="500" name="fakulteAdi" title="fakülte/bölüm adını giriniz: " type="text">
+                    <label for="egitim">Bölüm Adı:</label>
+                    <input maxlength="500" name="bolumAdi" title="bölüm adını giriniz: " type="text">
                 </div><br>
                 <label for="egitimBaslama">Eğitim Başlangıç Yılı: </label>
                     <input maxlength="50" name="egitimYillari" title="eğitim başlangıcını giriniz: " type="month">
@@ -379,10 +384,7 @@ background-color: #f00;
                     <label for="skill">Yetenek Ekle:</label>
                     <input maxlength="500" name="skillAdi" title="yetenek adını giriniz: " type="text">
                 </div><br>
-               
-               <br>
-                
-                
+                <br>
                 <input class="submit" type="submit" value="Kaydet">
             </div>
         </div>
@@ -548,15 +550,15 @@ background-color: #f00;
            
                 <div><hr><br>
                    
-                    <label for="egitim">Üniversite Adı:</label>
-                    <input maxlength="500" name="uniAdi" title="üniversite adını giriniz: " type="text">
+                    <label for="egitim">Kurum Adı:</label>
+                    <input maxlength="500" name="egitimAdi" title="eğitim kurumunun adını giriniz: " type="text">
                     <button type="button" class="deleteEdu">
                         <img src="delete.png" title="eğitimi sil">
                     </button>
                 </div><br>
                 <div>
-                    <label for="egitim">Fakülte/Bölüm Adı:</label>
-                    <input maxlength="500" name="fakulteAdi" title="fakülte/bölüm adını giriniz: " type="text">
+                    <label for="egitim">Bölüm Adı:</label>
+                    <input maxlength="500" name="bolumAdi" title="bölüm adını giriniz: " type="text">
                 </div><br>
                 <label for="egitimBaslama">Eğitim Başlangıç Yılı: </label>
                 <input maxlength="50" name="egitimYillari" title="eğitim başlangıcını giriniz: " type="month">
