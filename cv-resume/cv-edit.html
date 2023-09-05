@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cv Düzenle</title>
+    
+    
+    <style>
+
+        html, body {
+        height: auto;
+        margin: 0;
+        padding:0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center; /* Öğeleri yatay olarak ortala */
+        align-items: center; /* Öğeleri dikey olarak ortala */
+        }
+        .person-inf{
+            display: flex;
+            align-items: flex-start;
+            background-image: linear-gradient(45deg, rgba(194, 233, 221, 0.5) 1%, rgba(104, 119, 132, 0.5) 100%), linear-gradient(-45deg, #494d71 0%, rgba(217, 230, 185, 0.5) 80%);
+            padding: 50px;
+            /* border-radius: 20px; */
+            width: 700px;
+
+
+        }
+
+        .person-projects{
+            display: flex;
+            align-items: flex-start;
+            background-image: linear-gradient(45deg, rgba(194, 233, 221, 0.5) 1%, rgba(104, 119, 132, 0.5) 100%), linear-gradient(-45deg, #494d71 0%, rgba(217, 230, 185, 0.5) 80%);
+            padding: 20px;
+            /* border-radius: 20px; */
+            padding: 50px;
+            width: 700px;
+            
+
+        }
+        .person-projects .projects .project {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-top: 10px;
+    }
+
+        .person-experience{
+            display: flex;
+            align-items: flex-start;
+            background-image: linear-gradient(45deg, rgba(194, 233, 221, 0.5) 1%, rgba(104, 119, 132, 0.5) 100%), linear-gradient(-45deg, #494d71 0%, rgba(217, 230, 185, 0.5) 80%);
+            padding: 20px;
+            /* border-radius: 20px; */
+            padding: 50px;
+            width: 700px;
+            
+
+        }
+
+        .person-education{
+            display: flex;
+            align-items: flex-start;
+            background-image: linear-gradient(45deg, rgba(194, 233, 221, 0.5) 1%, rgba(104, 119, 132, 0.5) 100%), linear-gradient(-45deg, #494d71 0%, rgba(217, 230, 185, 0.5) 80%);
+            padding: 20px;
+            /* border-radius: 20px; */
+            padding: 50px;
+            width: 700px;
+            
+
+        }
+
+        .person-skills{
+            display: flex;
+            align-items: flex-start;
+            background-image: linear-gradient(45deg, rgba(194, 233, 221, 0.5) 1%, rgba(104, 119, 132, 0.5) 100%), linear-gradient(-45deg, #494d71 0%, rgba(217, 230, 185, 0.5) 80%);
+            padding: 20px;
+            /* border-radius: 20px; */
+            padding: 50px;
+            width: 700px;
+            
+
+        }
+
+        .person-experience .projects .project {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-top: 10px;
+    }
+
+        #projeAlaniEkle {
+        background-image: linear-gradient(45deg, rgba(194, 233, 221, 0.5) 1%, rgba(104, 119, 132, 0.5) 100%), linear-gradient(-45deg, #494d71 0%, rgba(217, 230, 185, 0.5) 80%);
+        color: rgb(16, 15, 15);
+        border: none;
+        padding: 5px 15px;
+        
+        cursor: pointer;
+        border-radius: 55px;
+        margin-left: 5px;
+    }
+
+         #egitimAlaniEkle {
+        background-image: linear-gradient(45deg, rgba(194, 233, 221, 0.5) 1%, rgba(104, 119, 132, 0.5) 100%), linear-gradient(-45deg, #494d71 0%, rgba(217, 230, 185, 0.5) 80%);
+        color: rgb(16, 15, 15);
+        border: none;
+        padding: 5px 15px;
+        
+        cursor: pointer;
+        border-radius: 55px;
+        margin-left: 5px;
+    }
+
+
+    .deleteProject {
+    position: relative;
+
+    margin: 5px; 
+    background-image: linear-gradient(45deg, rgba(194, 233, 221, 0.5) 1%, rgba(104, 119, 132, 0.5) 100%), linear-gradient(-45deg, #494d71 0%, rgba(217, 230, 185, 0.5) 80%);
+    color: white; 
+    border: none; 
+    border-radius: 15px; 
+    cursor: pointer; 
+}
+
+.deleteSkill {
+    position: relative;
+
+    margin: 5px; 
+    background-image: linear-gradient(45deg, rgba(194, 233, 221, 0.5) 1%, rgba(104, 119, 132, 0.5) 100%), linear-gradient(-45deg, #494d71 0%, rgba(217, 230, 185, 0.5) 80%);
+    color: white; 
+    border: none; 
+    border-radius: 15px; 
+    cursor: pointer; 
+}
+
+    .deleteExp{
+        position: relative;
+
+        margin: 5px; 
+        background-image: linear-gradient(45deg, rgba(194, 233, 221, 0.5) 1%, rgba(104, 119, 132, 0.5) 100%), linear-gradient(-45deg, #494d71 0%, rgba(217, 230, 185, 0.5) 80%);
+        color: white; 
+        border: none; 
+        border-radius: 15px; 
+        cursor: pointer; 
+    }
+
+    .deleteEdu{
+        position: relative;
+
+        margin: 5px; 
+        background-image: linear-gradient(45deg, rgba(194, 233, 221, 0.5) 1%, rgba(104, 119, 132, 0.5) 100%), linear-gradient(-45deg, #494d71 0%, rgba(217, 230, 185, 0.5) 80%);
+        color: white; 
+        border: none; 
+        border-radius: 15px; 
+        cursor: pointer; 
+    }
+
+
+.submit{
+    cursor: pointer;
+   
+}
+
+.etiketEkle{
+    cursor: pointer;
+    
+}
+
+.btnExp{
+    
+    background-image: linear-gradient(45deg, rgba(194, 233, 221, 0.5) 1%, rgba(104, 119, 132, 0.5) 100%), linear-gradient(-45deg, #494d71 0%, rgba(217, 230, 185, 0.5) 80%);
+    color: rgb(16, 15, 15);
+    border: none;
+    padding: 5px 15px;
+    
+    cursor: pointer;
+    border-radius: 55px;
+    margin-left: 5px;
+
+}
+
+.btnSkills{
+    
+    background-image: linear-gradient(45deg, rgba(194, 233, 221, 0.5) 1%, rgba(104, 119, 132, 0.5) 100%), linear-gradient(-45deg, #494d71 0%, rgba(217, 230, 185, 0.5) 80%);
+    color: rgb(16, 15, 15);
+    border: none;
+    padding: 5px 15px;
+    cursor: pointer;
+    border-radius: 55px;
+    margin-left: 5px;
+
+}
+
+.btnExp:hover, .btnProject:hover, .btnSkills:hover{
+background-color: #f00;
+}
+
+.btnEdu:hover + .hidden-list {
+  display: block;
+}
+
+.hidden-list {
+    display: none;
+    position: absolute;
+    background-color: white;
+    border: 1px solid #ccc;
+    padding: 10px;
+}
+
+/* Açılır Düğmeye Stil Verir */
+.dropbtn {
+ 
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+/* <div> alanı - açılır içeriği konumlandırmak için gereklidir */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+
+
+/* Açılır içerik gösterildiğinde açılır düğmenin arka plan rengini değiştirir */
+.button {
+  background-color: #f00;
+}
+
+.dropdown:hover .dropbtn {
+  background-color: #f00;
+}
+
+
+</style>
+
+</head>
+
+<body>
+    
+    <!-- <form action="" method="post"> -->
+    <div class="person-inf">
+<div><b><u><h2>1-Kişisel Bilgiler</h2></b></u>      
+
+    <div><br> 
+    <div>
+      <label for="adiSoyadi">Adı Soyadı: </label>
+      <input  maxlength="100" name="adiSoyadi" title="Adınızı ve Soyisminizi Girin" type="text"  width="150" height="20">
+    </div>
+    <div><br>
+      <label for="profilResmi">Profil Resmi Seçin:</label>
+      <input type="file" id="profilResmi" name="profilResmi" accept="image/*">
+    </div>
+    <div><br>
+        <label for="email">E-posta Adresiniz:</label>
+        <input maxlength="200" name="email" title="E-posta adresinizi giriniz" type="email"  width="150" height="20">
+    </div>
+    <div><br>
+        <label for="telefon">Telefon Numaranızı Giriniz:</label>
+        <input maxlength="200" name="telefon" title="telefon numaranızı giriniz" type="tel"  width="150" height="20">
+    </div>
+    <div><br>
+        <label for="adres">Adresinizi Giriniz:</label><br>
+        <textarea name="adres" id="adres" rows="3" cols=50></textarea>
+    </div>
+    <div><br>
+        <label for="hakkimda">Hakkında Alanı İçin Bilgi Giriniz:</label><br>
+        <textarea name="hakkinda" id="hakkinda" rows="6" cols=50></textarea>
+    </div>
+    <input class="submit" type="submit" value="Kaydet">
+    </div>
+</div>
+<!-- </form> -->
+    
+</div>
+
+
+    <div class="person-experience">
+        <div>
+            <b><u><h2>2-İş Tecrübeleri<input class="btnExp" type="button" id="tecrübeAlaniEkle" value="+" title="tecrübe ekle"></h2></b></u>
+            <div class="experiences">
+                <div>
+                    <label for="firmaAdi">Firma Adı: </label>
+                    <input maxlength="500" name="firmaAdi" title="firma adını giriniz: " type="text">
+                </div><br>
+                <div>
+                    <label for="unvan">Unvan: </label>
+                    <input maxlength="500" name="unvan" title="unvanı giriniz: " type="text">
+                </div><br>
+                <div>
+                    <label for="calismaBaslama">Çalışma Başlangıç Yılı: </label>
+                    <input maxlength="50" name="calismaYillari" title="çalışma başlangıcını giriniz: " type="month">
+                    <label for="calismaBitis">Çalışma Bitiş Yılı: </label>
+                    <input id="calismaBitis" maxlength="50" name="calismaYillari" title="çalışma bitiş tarihinizi giriniz: " type="month">
+                    <br>
+                    <input id="halaCalisiyorum" type="checkbox"></input>
+                    <label>halen çalışıyorum</label>
+                </div><br>
+                <input class="submit" type="submit" value="Kaydet">
+             
+                
+            </div>
+            
+        </div>
+    </div>
+
+    
+    <div class="person-education">
+
+       <div>
+        <div class="dropdown"><b><u><h2>3-Eğitimler<input type="button" class="dropbtn" id="egitimAlaniEkle" value="+" title="egitim ekle"></h2></b></u><div>
+      
+               
+              </div>
+            </div>
+            
+            <div>
+           <div class="educations"><br> 
+                <div>
+                    <label for="egitim">Üniversite Adı:</label>
+                    <input maxlength="500" name="uniAdi" title="üniversite adını giriniz: " type="text">
+                </div><br>
+                <div>
+                    <label for="egitim">Fakülte/Bölüm Adı:</label>
+                    <input maxlength="500" name="fakulteAdi" title="fakülte/bölüm adını giriniz: " type="text">
+                </div><br>
+                <label for="egitimBaslama">Eğitim Başlangıç Yılı: </label>
+                    <input maxlength="50" name="egitimYillari" title="eğitim başlangıcını giriniz: " type="month">
+                    <label for="egitimBitis">Eğitim Bitiş Yılı: </label>
+                    <input id="egitimBitis" maxlength="50" name="egitimYillari" title="eğitim bitiş tarihinizi giriniz: " type="month"><br>
+                <input id="halaDevam" type="checkbox"></input>
+                <label>halen devam ediyorum</label>
+            </div><br>
+                
+                <input class="submit" type="submit" value="Kaydet">
+            </div>
+        </div>
+    </div>
+   
+    <div class="person-projects">
+        <div><b><u><h2>4-Projeler<input class="btnProject" type="button"  id="projeAlaniEkle" value="+" title="proje ekle"></h2></b></u>
+            
+        
+            <div class="projects"><br> 
+                <div>
+                    <label for="proje">Proje Adı:</label>
+                    <input maxlength="500" name="projeAdi" title="proje adını giriniz: " type="text">
+                </div><br>
+                <div>
+                    <label for="projeAciklamasi">Proje Açıklaması Giriniz:</label><br>
+                    <textarea name="projeAciklamasi" rows="3" cols=50></textarea>
+                </div><br>
+                <div>
+                    <label for="teknolojiler">Kullanılan Teknolojiler</label>
+                    <input maxlength="200" name="teknolojiler" title="Kullandığınız teknolojileri giriniz" type="text" id="teknolojiEkle">
+                    <button class="submit" type="button" onclick="ekleEtiket(this)">Ekle</button><br>
+                </div>
+                
+                <div>
+                    <label for="secilenTeknolojiler"><i>Eklenen Teknolojiler:</i></label>
+                    <div id="etiketler"></div>
+                </div><br><br>
+                
+                
+                <input class="submit" type="submit" value="Kaydet">
+            </div>
+        </div>
+    </div>
+
+
+    <div class="person-skills">
+        <div><b><u><h2>5-Skills<input class="btnSkills" type="button"  id="skillAlaniEkle" value="+" title="skill ekle"></h2></b></u>
+            
+        
+            <div class="skills"><br> 
+                <div>
+                    <label for="skill">Yetenek Ekle:</label>
+                    <input maxlength="500" name="skillAdi" title="yetenek adını giriniz: " type="text">
+                </div><br>
+               
+               <br>
+                
+                
+                <input class="submit" type="submit" value="Kaydet">
+            </div>
+        </div>
+    </div>
+     
+  
+    
+    <script>
+        // "+" butonunu seç
+        const addButton = document.getElementById('projeAlaniEkle');
+    
+        // "+" butonuna tıklanınca yeni bir proje alanı ekleyin
+            addButton.addEventListener('click', function() {
+            const projectsContainer = document.querySelector('.projects');
+            const newProjectArea = document.createElement('div');
+    
+            // Yeni proje alanı içeriği
+            newProjectArea.innerHTML = `
+                <hr><div class="projects"><br> 
+                    <div>
+                        <label for="proje">Proje Adı:</label>
+                        <input maxlength="500" name="projeAdi" title="proje adını giriniz: " type="text">
+                        <button type="button" class="deleteProject">
+                            <img src="delete.png" title="projeyi sil">
+                        </button>
+                    </div><br>
+                    <div>
+                        <label for="projeAciklamasi">Proje Açıklaması Giriniz:</label><br>
+                        <textarea name="projeAciklamasi" rows="3" cols=50></textarea>
+                    </div><br>
+                    <div>
+                        <label for="teknolojiler">Kullanılan Teknolojiler</label>
+                        <input maxlength="200" name="teknolojiler" title="Kullandığınız teknolojileri giriniz" type="text" class="teknolojiEkle">
+                        <button type="button" class="etiketEkle">Ekle</button><br>
+                    </div>
+                    
+                    <div>
+                        <label for="secilenTeknolojiler"><i>Eklenen Teknolojiler:</i></label>
+                        <div class="etiketler"></div><br><br>
+                    </div>
+                    
+                    <input class="submit" type="submit" value="Kaydet">
+                </div>
+            `;
+    
+            // Yeni proje alanını mevcut projeler alanına ekle
+            projectsContainer.appendChild(newProjectArea);
+    
+            // Yeni proje alanının içindeki "Sil" butonunu seç
+            const deleteButton = newProjectArea.querySelector('.deleteProject');
+            
+            // "Sil" butonuna tıklanınca alanı silme işlevini tanımla
+            deleteButton.addEventListener('click', function() {
+                projectsContainer.removeChild(newProjectArea);
+            });
+    
+            // Yeni proje alanının içindeki "Ekle" butonunu seç
+            const etiketEkleButton = newProjectArea.querySelector('.etiketEkle');
+            
+            // "Ekle" butonuna tıklanınca etiketi ekleme işlevi
+                etiketEkleButton.addEventListener('click', function() {
+                const teknolojiInput = newProjectArea.querySelector('.teknolojiEkle');
+                const teknoloji = teknolojiInput.value.trim();
+    
+                if (teknoloji !== "") {
+                    const etiketlerDiv = newProjectArea.querySelector('.etiketler');
+                    const yeniEtiket = document.createElement("span");
+                    yeniEtiket.innerHTML = `<span>${teknoloji}</span> <button type="button" class="deleteTag">x</button>`;
+                    etiketlerDiv.appendChild(yeniEtiket);
+    
+                    // Etiketleri silmek için "Sil" butonlarına işlev ekleyin
+                    const deleteTagButton = yeniEtiket.querySelector('.deleteTag');
+                    deleteTagButton.addEventListener('click', function() {
+                        etiketlerDiv.removeChild(yeniEtiket);
+                    });
+    
+                    teknolojiInput.value = "";
+                }
+            });
+        });
+
+    document.addEventListener("DOMContentLoaded", function () {
+    const tecrubeAlaniEkleButton = document.getElementById("tecrübeAlaniEkle");
+    const experiencesContainer = document.querySelector(".experiences");
+
+    tecrubeAlaniEkleButton.addEventListener("click", function () {
+    const newExperience = document.createElement("div");
+    newExperience.innerHTML = `
+    <div class="experience"><br>    
+            <div><hr>
+                <label for="firmaAdi">Firma Adı: </label>
+                <input maxlength="500" name="firmaAdi" title="firma adını giriniz: " type="text">
+                <button type="button" class="deleteExp">
+                <img src="delete.png" title="projeyi sil"></button>
+            </div><br>
+            <div>
+                <label for="unvan">Unvan: </label>
+                <input maxlength="500" name="unvan" title="unvanı giriniz: " type="text">
+            </div><br>
+            <div>
+                <label for="calismaBaslama">Çalışma Başlangıç Yılı: </label>
+                <input maxlength="50" name="calismaYillari" title="çalışma başlangıcını giriniz: " type="month">
+                <label for="calismaBitis">Çalışma Bitiş Yılı: </label>
+                <input class="calismaBitis" maxlength="50" name="calismaYillari" title="çalışma bitiş tarihinizi giriniz: " type="month">
+                <br>
+                <input class="halaCalisiyorum" type="checkbox"></input>
+                <label>halen çalışıyorum</label>
+                
+            </div><br>
+    <input class="submit" type="submit" value="Kaydet">
+            </div>
+            
+        `;
+
+        // Yeni tecrübe alanının içindeki "Sil" butonunu seçtim
+        const deleteExpButton = newExperience.querySelector('.deleteExp');
+        
+        // "Sil" butonuna tıklanınca alanı silme işlevi çalıştı
+        deleteExpButton.addEventListener('click', function() {
+            experiencesContainer.removeChild(newExperience);              
+        });
+
+        // Yeni tecrübe alanının içindeki "halaCalisiyorum" checkbox'unu seçtim
+        const halaCalisiyorumCheckbox = newExperience.querySelector('.halaCalisiyorum');
+        // Yeni tecrübe alanının içindeki "calismaBitis" inputunu seçtim
+        const calismaBitisInput = newExperience.querySelector('.calismaBitis');
+
+        // "halaCalisiyorum" checkbox'una tıklanınca ilgili bitiş yılını devre dışı bırakma işlevi
+        halaCalisiyorumCheckbox.addEventListener('change', function() {
+            if (this.checked) {
+                calismaBitisInput.disabled = true;
+                calismaBitisInput.value=0;
+            } else {
+                calismaBitisInput.disabled = false;
+            }
+        });
+
+        experiencesContainer.appendChild(newExperience);
+    });
+});
+  
+    document.getElementById('halaCalisiyorum').addEventListener('change', function() {
+    var calismaBitis = document.getElementById('calismaBitis');
+
+    // Checkbox seçiliyse input devre dışı bırakılır, seçili değilse aktif bırakılır
+    if (this.checked) {
+        calismaBitis.disabled = true;
+        calismaBitis.value=0;
+    } else {
+        calismaBitis.disabled = false;
+    }
+});
+
+    document.addEventListener("DOMContentLoaded", function () {
+    const egitimAlaniEkleButton = document.getElementById("egitimAlaniEkle");
+    const educationContainer = document.querySelector(".educations");
+
+    egitimAlaniEkleButton.addEventListener("click", function () {
+        const newEducation = document.createElement("div");
+
+  
+        newEducation.innerHTML = `
+           
+                <div><hr><br>
+                   
+                    <label for="egitim">Üniversite Adı:</label>
+                    <input maxlength="500" name="uniAdi" title="üniversite adını giriniz: " type="text">
+                    <button type="button" class="deleteEdu">
+                        <img src="delete.png" title="eğitimi sil">
+                    </button>
+                </div><br>
+                <div>
+                    <label for="egitim">Fakülte/Bölüm Adı:</label>
+                    <input maxlength="500" name="fakulteAdi" title="fakülte/bölüm adını giriniz: " type="text">
+                </div><br>
+                <label for="egitimBaslama">Eğitim Başlangıç Yılı: </label>
+                <input maxlength="50" name="egitimYillari" title="eğitim başlangıcını giriniz: " type="month">
+                <label for="egitimBitis">Eğitim Bitiş Yılı: </label>
+                <input class="egitimBitis" maxlength="50" name="egitimYillari" title="eğitim bitiş tarihinizi giriniz: " type="month"><br>
+                <input class="halaDevam" type="checkbox"></input>
+                <label>halen devam ediyorum</label>       
+        
+        `;
+        educationContainer.appendChild(newEducation);
+
+        // Yeni eğitim alanının içindeki "Sil" butonunu seçtim
+        const deleteEduButton = newEducation.querySelector('.deleteEdu');
+        
+        // "Sil" butonuna tıklanınca alanı silme işlevi çalıştı
+        deleteEduButton.addEventListener('click', function() {
+            educationContainer.removeChild(newEducation);       
+        });
+        // Yeni tecrübe alanının içindeki "halaCalisiyorum" checkbox'unu seçtim
+        const halaDevamCheckbox = newEducation.querySelector('.halaDevam');
+        // Yeni tecrübe alanının içindeki "calismaBitis" inputunu seçtim
+        const egitimBitisInput = newEducation.querySelector('.egitimBitis');
+
+        // "halaCalisiyorum" checkbox'una tıklanınca ilgili bitiş yılını devre dışı bırakma işlevi
+        halaDevamCheckbox.addEventListener('change', function() {
+            if (this.checked) {
+                egitimBitisInput.disabled = true;
+                egitimBitisInput.value=0;
+            } else {
+                egitimBitisInput.disabled = false;
+            }
+        });
+        
+        
+    });
+});
+
+    document.getElementById('halaDevam').addEventListener('change', function() {
+    var egitimBitis = document.getElementById('egitimBitis');
+
+    // Checkbox seçiliyse input devre dışı bırakılır, seçili değilse aktif bırakılır
+    if (this.checked) {
+        egitimBitis.disabled = true;
+        egitimBitis.value=0;
+    } else {
+        egitimBitis.disabled = false;
+    }
+});
+
+
+        function ekleEtiket() {
+        // Metin kutusundan teknolojiyi al
+        var teknoloji = document.getElementById("teknolojiEkle").value;
+
+        // Boşlukları ve başındaki ve sonundaki boşlukları kaldır
+        teknoloji = teknoloji.trim();
+
+        // Teknoloji boş değilse etiket olarak ekleyin
+        if (teknoloji !== "") {
+            var etiketlerDiv = document.getElementById("etiketler");
+            
+            // Yeni etiketi oluşturun
+            var yeniEtiket = document.createElement("span");
+            yeniEtiket.innerHTML = `<span>${teknoloji}</span> <button onclick="cikarEtiket(this)">x</button>`;
+
+            // Oluşturulan etiketi etiketlerDiv'e ekleyin
+            etiketlerDiv.appendChild(yeniEtiket);
+
+            // Metin kutusunu temizle
+            document.getElementById("teknolojiEkle").value = "";
+
+            // Eklenen teknolojiyi metin kutusuna ekleyin
+            var secilenTeknolojiler = document.getElementById("secilenTeknolojiler");
+            secilenTekniler.value += teknoloji + "\n";
+        }
+    }
+
+    function cikarEtiket(button) {
+        var etiketlerDiv = document.getElementById("etiketler");
+        var etiket = button.parentNode;
+        var teknoloji = etiket.firstChild.innerText;
+
+        // Etiketi etiketlerDiv'den kaldır
+        etiketlerDiv.removeChild(etiket);
+
+        // Eklenen teknolojiden çıkar
+        var secilenTeknolojiler = document.getElementById("secilenTeknolojiler");
+        secilenTeknolojiler.value = secilenTeknolojiler.value.replace(teknoloji + "\n", "");
+    }
+
+
+
+    document.addEventListener("DOMContentLoaded", function () {
+    const skillAlaniEkleButton = document.getElementById("skillAlaniEkle");
+    const skillContainer = document.querySelector(".skills");
+
+    skillAlaniEkleButton.addEventListener("click", function () {
+    const newSkill = document.createElement("div");
+
+  
+        newSkill.innerHTML = `
+           
+        <div class="skills"><br> 
+                <div><hr>
+                    <label for="skill">Yetenek Ekle:</label>
+                    <input maxlength="500" name="skillAdi" title="yetenek adını giriniz: " type="text">
+                    <button type="button" class="deleteSkill">
+                        <img src="delete.png" title="eğitimi sil">
+                    </button>
+                </div><br>
+               
+               <br>
+                
+                
+                <input class="submit" type="submit" value="Kaydet">
+            </div>    
+        
+        `;
+        skillContainer.appendChild(newSkill);
+
+       
+        const deleteSkillButton = newSkill.querySelector('.deleteSkill');
+    
+        deleteSkillButton.addEventListener('click', function() {
+        skillContainer.removeChild(newSkill);       
+        });
+      
+
+    });
+});
+
+
+    
+    </script>
+    
+</body>
+</html>
