@@ -49,13 +49,12 @@
         .person-experience{
             display: flex;
             align-items: flex-start;
-            background-image: linear-gradient(45deg, rgba(194, 233, 221, 0.5) 1%, rgba(104, 119, 132, 0.5) 100%), linear-gradient(-45deg, #494d71 0%, rgba(217, 230, 185, 0.5) 80%);
-            padding: 20px;
-            /* border-radius: 20px; */
+            background-image: linear-gradient(45deg, rgba(194, 233, 221, 0.5) 1%, rgba(104, 119, 132, 0.5) 100%), linear-gradient(-45deg, #494d71 0%, rgba(217, 230, 185, 0.5) 80%);     
+           
             padding: 50px;
             width: 700px;
-            
-
+            line-height: 26px;
+  
         }
 
         .person-education{
@@ -63,7 +62,7 @@
             align-items: flex-start;
             background-image: linear-gradient(45deg, rgba(194, 233, 221, 0.5) 1%, rgba(104, 119, 132, 0.5) 100%), linear-gradient(-45deg, #494d71 0%, rgba(217, 230, 185, 0.5) 80%);
             padding: 20px;
-            /* border-radius: 20px; */
+         
             padding: 50px;
             width: 700px;
             
@@ -235,8 +234,21 @@ background-color: #f00;
 }
 
 .information{
-    gap:5px;
- }
+    line-height: 26px;
+    padding: 5px;
+
+}
+
+.educations{
+    line-height: 26px;
+    padding: 5px;
+}
+
+.projects{
+    line-height: 26px;
+    padding: 5px;
+}
+
 
 
 </style>
@@ -249,28 +261,28 @@ background-color: #f00;
     <div class="person-inf">
 <div><b><u><h2>1-Kişisel Bilgiler</h2></b></u>      
 
-    <div class="information"><br> 
+    <div class="information">
     <div>
       <label for="adiSoyadi">Adı Soyadı: </label>
       <input  maxlength="100" name="adiSoyadi" title="Adınızı ve Soyisminizi Girin" type="text"  width="150" height="20">
     </div>
-    <div><br>
+    <div>
       <label for="profilResmi">Profil Resmi Seçin:</label>
       <input type="file" id="profilResmi" name="profilResmi" accept="image/*">
     </div>
-    <div><br>
+    <div>
         <label for="email">E-posta Adresiniz:</label>
         <input maxlength="200" name="email" title="E-posta adresinizi giriniz" type="email"  width="150" height="20">
     </div>
-    <div><br>
+    <div>
         <label for="telefon">Telefon Numaranızı Giriniz:</label>
         <input maxlength="200" name="telefon" title="telefon numaranızı giriniz" type="tel"  width="150" height="20">
     </div>
-    <div><br>
+    <div>
         <label for="adres">Adresinizi Giriniz:</label><br>
         <textarea name="adres" id="adres" rows="3" cols=50></textarea>
     </div>
-    <div><br>
+    <div>
         <label for="hakkimda">Hakkında Alanı İçin Bilgi Giriniz:</label><br>
         <textarea name="hakkinda" id="hakkinda" rows="6" cols=50></textarea>
     </div>
@@ -289,20 +301,20 @@ background-color: #f00;
                 <div>
                     <label for="firmaAdi">Firma Adı: </label>
                     <input maxlength="500" name="firmaAdi" title="firma adını giriniz: " type="text">
-                </div><br>
+                </div>
                 <div>
                     <label for="unvan">Unvan: </label>
                     <input maxlength="500" name="unvan" title="unvanı giriniz: " type="text">
-                </div><br>
+                </div>
                 <div>
                     <label for="calismaBaslama">Çalışma Başlangıç Yılı: </label>
                     <input maxlength="50" name="calismaYillari" title="çalışma başlangıcını giriniz: " type="month">
                     <label for="calismaBitis">Çalışma Bitiş Yılı: </label>
-                    <input id="calismaBitis" maxlength="50" name="calismaYillari" title="çalışma bitiş tarihinizi giriniz: " type="month">
-                    <br>
+                    <input id="calismaBitis" maxlength="50" name="calismaYillari" title="çalışma bitiş tarihinizi giriniz: " type="month"><br>
+                    
                     <input id="halaCalisiyorum" type="checkbox"></input>
                     <label>halen çalışıyorum</label>
-                </div><br>
+                </div>
                 <input class="submit" type="submit" value="Kaydet">
              
                 
@@ -322,15 +334,15 @@ background-color: #f00;
             </div>
             
             <div>
-           <div class="educations"><br> 
+           <div class="educations">
                 <div>
                     <label for="egitim">Eğitim Kurumunun Adı:</label>
                     <input maxlength="500" name="egitimAdi" title="eğitim kurumunun adını giriniz: " type="text">
-                </div><br>
+                </div>
                 <div>
                     <label for="egitim">Bölüm Adı:</label>
                     <input maxlength="500" name="bolumAdi" title="bölüm adını giriniz: " type="text">
-                </div><br>
+                </div>
                 <label for="egitimBaslama">Eğitim Başlangıç Yılı: </label>
                     <input maxlength="50" name="egitimYillari" title="eğitim başlangıcını giriniz: " type="month">
                     <label for="egitimBitis">Eğitim Bitiş Yılı: </label>
@@ -348,15 +360,15 @@ background-color: #f00;
         <div><b><u><h2>4-Projeler<input class="btnProject" type="button"  id="projeAlaniEkle" value="+" title="proje ekle"></h2></b></u>
             
         
-            <div class="projects"><br> 
+            <div class="projects">
                 <div>
                     <label for="proje">Proje Adı:</label>
                     <input maxlength="500" name="projeAdi" title="proje adını giriniz: " type="text">
-                </div><br>
+                </div>
                 <div>
                     <label for="projeAciklamasi">Proje Açıklaması Giriniz:</label><br>
                     <textarea name="projeAciklamasi" rows="3" cols=50></textarea>
-                </div><br>
+                </div>
                 <div>
                     <label for="teknolojiler">Kullanılan Teknolojiler</label>
                     <input maxlength="200" name="teknolojiler" title="Kullandığınız teknolojileri giriniz" type="text" id="teknolojiEkle">
@@ -366,7 +378,7 @@ background-color: #f00;
                 <div>
                     <label for="secilenTeknolojiler"><i>Eklenen Teknolojiler:</i></label>
                     <div id="etiketler"></div>
-                </div><br><br>
+                </div><br>
                 
                 
                 <input class="submit" type="submit" value="Kaydet">
@@ -379,11 +391,11 @@ background-color: #f00;
         <div><b><u><h2>5-Skills<input class="btnSkills" type="button"  id="skillAlaniEkle" value="+" title="skill ekle"></h2></b></u>
             
         
-            <div class="skills"><br> 
+            <div class="skills">
                 <div>
                     <label for="skill">Yetenek Ekle:</label>
                     <input maxlength="500" name="skillAdi" title="yetenek adını giriniz: " type="text">
-                </div><br>
+                </div>
                 <br>
                 <input class="submit" type="submit" value="Kaydet">
             </div>
