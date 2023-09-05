@@ -119,19 +119,17 @@ justify-content: space-between;
 }
 
 .skills .li_wrap{
-    width: 65px ;
-    height:65px;
-    margin-bottom: 5px;
-
-    margin-left: 20px;
-    border-radius: 20px;
-    
+    width: 100px ;
+    height: 100px;
+    margin-bottom: 15px;
+    border-radius: 15px;
+    background-color: #fff;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    border: 2px solid #1c2b9e
    
-
 }
 
 .skills .li_wrap .text{
