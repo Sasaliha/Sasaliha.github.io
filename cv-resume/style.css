@@ -357,6 +357,14 @@ justify-content: space-between;
  @media print{
     body *{
         visibility: hidden;
+        
+    }
+
+    .resume{
+   
+        margin: 25px auto;
+       
+      
     }
 
     .wrapper * {
