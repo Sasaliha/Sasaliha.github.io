@@ -262,6 +262,17 @@ justify-content: space-between;
     display: none;
  }
 
+ @media screen and (max-width:1600px) {
+    
+  
+
+    .resume{
+      
+        margin: 25px auto;
+     
+    }
+}
+
 
  @media screen and (max-width:850px) {
     
