@@ -14,11 +14,14 @@ body{
     background: linear-gradient(to right, #3525af, #7b07e1);
 }
 
+
+
 .resume{
+   
     width:800px;
     height: auto;
     background-color: #fff;
-    margin: 25px 800px;
+    margin: 5px 800px;
     display:flex;
   
 }
@@ -254,7 +257,7 @@ justify-content: space-between;
 
  .edit{
     position: fixed;
-    width: 1000px;
+    width: 800px;
     height: 1000px;
     display: none;
  }
