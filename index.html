@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en"> 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cv Design</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    
+</head>
+<!-- <button class="btnEdit" title="Düzenle">Edit
+    <img src="edit.png">
+</button> -->
+
+<!-- <script>
+    
+    document.addEventListener('DOMContentLoaded', function () {
+
+    // Düğmeyi ve iframe'i al
+    var btnDüzenle = document.querySelector('.btnEdit');
+    var iframeEdit = document.getElementById('edit');
+  
+    // Düğmeye tıklanınca
+    btnDüzenle.addEventListener('click', function () {
+      // İframe'i görünür yap
+      if (iframeEdit.style.display === 'none' || iframeEdit.style.display === '') {
+      iframeEdit.style.display = 'block';
+    
+    
+    } else {
+      iframeEdit.style.display = 'none';
+   
+    }
+    });
+})
+  </script> -->
+
+
+
+<body>
+    <button id="btnEdit" onclick="showForm()" style="cursor:pointer"><img src="./edit.png">Edit</button> 
+</body>
+
+<!-- <iframe id="edit" class="edit" src="cv-edit.html"></iframe> -->
+
+
+
+<div id="main" class="main">
+<div id="blog" class="wrapper">
+    <div class="resume">
+        <div class="left">
+            <div class="img_holder">
+                <img id="avatar" src="" alt="picture" >
+            </div>
+            <div class="contact_wrap pb">
+       
+            <div class="title">
+                Contact
+            </div>
+            
+            <div class="contact">
+            <ul>
+
+                <li>
+                    <div class="li_wrap">
+                        <div class="icon" id="phoneNumber">
+                         
+                        </div>                            
+                <div id="phone" class="text">
+                    <!-- PHONE -->
+                </div>
+                    </div>
+                </li>
+
+
+                <li>
+                    <div class="li_wrap">
+                        <div class="icon" id="mailAddress">
+                           
+                        </div>
+                <div id="email" class="text">
+                    <!-- MAİL -->
+                </div>
+                    </div>
+                </li>
+                   
+
+               <li>
+                    <div class="li_wrap">
+                        <div class="icon">
+                            <i class="fa-solid fa-map-pin"></i>
+                        </div>
+                                
+                <div id="address" class="text">
+                    <!-- ADRES -->
+                </div>
+                        </div>
+                </li>
+
+
+            </ul>
+         </div>   
+         </div>
+         <br>  <br>  
+
+         <div class="skills_wrap pb">
+       
+            <div class="title">
+                Skills
+            </div>
+            
+            <div class="skills" id="skills">
+                <ul>
+
+                    
+            
+                     
+                </ul>
+            </div>
+            
+<div>
+         
+         <br>
+         <br>
+         <br>
+         <br>
+         <br>
+         <br>
+         <br>
+         <br>
+         <br>
+         <br>
+         <br>
+         <br>
+         <br>
+         <br>
+         <br>
+         <br> 
+         <br>
+         <br>
+
+</div>
+
+
+<div class="title">
+    FOLLOW ME
+</div>
+
+         <div>
+            <ul id="social-medias" class="social-medias">
+
+            </ul>
+         </div>  
+         
+         
+         </div>
+       
+        </div>
+       
+        <div class="right">
+            <div class="header">
+                <div class="name_role">
+                    
+                    <div id="name" class="name">
+                       <!-- NAME -->
+                    </div>
+                    <div id="role" class="role">
+                        <!-- title -->
+                    </div>
+                </div>
+                <div id="aboutMe" class="about">
+                  <!-- ABOUT -->
+                </div>
+
+            </div>
+
+
+         
+            <div class="right_inner">
+                
+                <div class="exp">
+                    <div class="title">
+                        Experience
+                    </div>
+                    <div class="exp_wrap" id="experiences">
+                        <ul>
+                           
+                           
+                        </ul>
+                    </div>
+                </div>
+
+
+                
+                <div class="educations">
+                    <div class="title">
+                       Educations
+                    </div>
+                    <div class="edu_wrap" id="educations">
+                        <ul>
+                            
+                            
+                        </ul>
+                    </div>
+                </div>
+
+
+                <div class="projects">
+                    <div class="title">
+                       Projects
+                    </div>
+                    <div>
+                        <ul id="projects" class="projects">
+            
+                        </ul>
+                     </div>  
+                </div>
+
+
+
+            </div>
+            
+        </div>
+
+    </div>
+</div>
+</div>   
+
+<div id="editForm" class="editForm">
+    <div>      
+
+        <div class="inf">
+            <button class="btn" onclick="save()" value="Kaydet"  title="Save And Close"><img src="./save.png" ></button>
+
+            <button class="btn" id="btnCancel" onclick="cancelForm()"  title="Cancel"><img src="./cancel.png" ></button>
+
+           
+       
+            <div>
+            
+
+          <b><u><h2>1-Kişisel Bilgiler</h2></b></u><br> 
+          <label for="adiSoyadi">Adı Soyadı: </label>
+          <input onkeyup="keyupInputAndSetValue('name',event)" id="infoText" type="text" maxlength="100" name="adiSoyadi" title="Adınızı ve Soyisminizi Girin"   width="150" height="20">
+        </div>
+        <div><br>
+          <label for="profilResmi">Profil Resmi Seçin:</label>
+          <input type="file" id="profilResmi" name="profilResmi" accept="image/*">
+        </div>
+        <div><br>
+            <label for="email">E-posta Adresiniz:</label>
+            <input onkeyup="keyupInputAndSetValue('email',event)" class="infoText" id="mailText" maxlength="200" name="email" title="E-posta adresinizi giriniz" type="email"  width="150" height="20">
+        </div>
+        <div><br>
+            <label for="telefon">Telefon Numaranızı Giriniz:</label>
+            <input onkeyup="keyupInputAndSetValue('phone',event)" id="phoneText" class="infoText" maxlength="200" name="telefon" title="telefon numaranızı giriniz" type="tel"  width="150" height="20">
+        </div>
+        <div><br>
+            <label for="adres">Adresinizi Giriniz:</label><br>
+            <textarea onkeyup="keyupInputAndSetValue('address',event)" id="addressText" class="infoText" name="adres" id="adres" rows="3" cols=50></textarea>
+        </div>
+        <div><br>
+            <label for="hakkimda">Hakkında Alanı İçin Bilgi Giriniz:</label><br>
+            <textarea onkeyup="keyupInputAndSetValue('aboutMe',event)" id="aboutText" class="infoText" name="hakkinda" rows="6" cols=50></textarea>
+        </div>
+        
+        </div>
+
+        <div class="person-experiences">
+            <div><b><u><h2>2-İş Deneyimleri<input onclick="createExperienceEditFormDivField(); updateExperienceElements();" class="btnExperience" type="button"  id="experienceAlaniEkle" value="+" title="deneyim ekle"></h2></b></u>
+                
+                <div class="experiences-edit" id="experiences-edit"><br> 
+                    
+                </div>
+            </div>
+        </div>
+
+
+        <div class="person-educations">
+            <div><b><u><h2>3-Eğitimler<input onclick="createEducationEditFormDivField()"  class="btnEducations" type="button"  id="educationAlaniEkle" value="+" title="eğitim ekle"></h2></b></u><br>
+                    
+             <div class="educations-edit" id="educations-edit"><br> 
+    
+               
+                   
+                
+            </div>
+      
+            </div>
+            </div>
+
+         <div class="person-projects">
+            <div><b><u><h2>4-Projeler<input onclick="createProjectEditFormDivField(); updateProjectElements();" class="btnProject" type="button"  id="projeAlaniEkle" value="+" title="proje ekle"></h2></b></u>
+                
+                <div class="projects-edit" id="projects-edit"><br> 
+                    
+                </div>
+            </div>
+        </div>
+
+
+        
+        <div class="person-skills">
+        <div><b><u><h2>5-Skills<input onclick="createSkillEditFormDivField()"  class="btnSkills" type="button"  id="skillAlaniEkle" value="+" title="skill ekle"></h2></b></u><br>
+                
+         <div class="skills-edit" id="skills-edit"><br> 
+
+           
+               
+            
+        </div>
+  
+        </div>
+        </div>
+
+        <div class="person-socialMedias">
+            <div><b><u><h2>6-Sosyal Medya Hesapları<input onclick="createSocialMediaEditFormDivField()" class="btnSocialMedias" type="button"  id="socialMediaAlaniEkle" value="+" title="sosyal medya alanı ekle"></h2></b></u>
+                
+            
+                <div class="socialMedias-edit" id="socialMedias-edit">
+                    <div>
+                  
+    
+                </div>
+            
+             
+               
+            </div>
+        </div>
+
+
+
+   
+    </div>
+
+   
+</div>
+
+
+
+ 
+
+
+<!-- <div class="d-flex" id="spinner">
+    <h1>Sayfa yükleniyor...</h1>
+    <div class="spinner"></div>
+</div>
+
+<div class="d-flex" id="error">
+    <h2>Bir hatayla karşılaştık...</h2>
+    <button onclick="tryAgain()">Tekrar Dene</button>
+</div> -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.5.0/axios.min.js"></script>
+<script src="./script.js"></script>
+
+<script>
+
+
+
+</script>
+
+
+</body>
+</html>
