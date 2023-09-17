@@ -64,7 +64,7 @@
                 <li>
                     <div class="li_wrap">
                         <div class="icon" id="phoneNumber">
-                         
+                            <i class="fa-solid fa-mobile"></i>
                         </div>                            
                 <div id="phone" class="text">
                     <!-- PHONE -->
@@ -76,7 +76,7 @@
                 <li>
                     <div class="li_wrap">
                         <div class="icon" id="mailAddress">
-                           
+                            <i class="fa-regular fa-envelope"></i>
                         </div>
                 <div id="email" class="text">
                     <!-- MAİL -->
@@ -116,30 +116,8 @@
             
                      
                 </ul>
-            </div>
+            </div> <br><br><br><br>
             
-<div>
-         
-         <br>
-         <br>
-         <br>
-         <br>
-         <br>
-         <br>
-         <br>
-         <br>
-         <br>
-         <br>
-         <br>
-         <br>
-         <br>
-         <br>
-         <br>
-         <br> 
-         <br>
-         <br>
-
-</div>
 
 
 <div class="title">
@@ -244,8 +222,12 @@
           <input onkeyup="keyupInputAndSetValue('name',event)" id="infoText" type="text" maxlength="100" name="adiSoyadi" title="Adınızı ve Soyisminizi Girin"   width="150" height="20">
         </div>
         <div><br>
+            <label for="role">Pozisyon Bilgisi: </label>
+            <input onkeyup="keyupInputAndSetValue('role',event)" id="infoText" type="text" maxlength="100" name="role" id="role" title="pozisyon giriniz"   width="150" height="20">
+          </div>
+          <div><br>
           <label for="profilResmi">Profil Resmi Seçin:</label>
-          <input type="file" id="profilResmi" name="profilResmi" accept="image/*">
+          <input onchange="showAvatarPreview('avatar',event)" type="file" id="avatarImage" name="avatarImage" accept="image/*">
         </div>
         <div><br>
             <label for="email">E-posta Adresiniz:</label>
@@ -277,7 +259,7 @@
 
 
         <div class="person-educations">
-            <div><b><u><h2>3-Eğitimler<input onclick="createEducationEditFormDivField()"  class="btnEducations" type="button"  id="educationAlaniEkle" value="+" title="eğitim ekle"></h2></b></u><br>
+            <div><b><u><h2>3-Eğitimler<input onclick="createEducationEditFormDivField(); updateEducationElements();"  class="btnEducations" type="button" id="educationAlaniEkle" value="+" title="eğitim ekle"></h2></b></u><br>
                     
              <div class="educations-edit" id="educations-edit"><br> 
     
@@ -301,7 +283,7 @@
 
         
         <div class="person-skills">
-        <div><b><u><h2>5-Skills<input onclick="createSkillEditFormDivField()"  class="btnSkills" type="button"  id="skillAlaniEkle" value="+" title="skill ekle"></h2></b></u><br>
+        <div><b><u><h2>5-Yetenekler<input onclick="createSkillEditFormDivField()"  class="btnSkills" type="button"  id="skillAlaniEkle" value="+" title="skill ekle"></h2></b></u><br>
                 
          <div class="skills-edit" id="skills-edit"><br> 
 

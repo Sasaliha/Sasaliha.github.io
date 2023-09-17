@@ -72,20 +72,13 @@ function setMyInformation(person){
         document.getElementById("phoneNumber").innerHTML=` <a href="https://wa.me/+9${person.phone}" target=_blank><i class="fa-solid fa-mobile"></i></a>`
 
         document.getElementById("infoText").value=person.name;
-        
-
         document.getElementById("mailText").value=person.email;
-        
-
         document.getElementById("phoneText").value=person.phone;
-        
-
         document.getElementById("addressText").value=person.address;
-      
-
         document.getElementById("aboutText").value=person.aboutMe;
-       
-       
+        document.getElementById("role").value=person.role;
+        document.getElementById("avatar").value=person.avatar;
+
  
 }
 
@@ -246,14 +239,6 @@ function keyupInputAndSetSkillInputValue(event, name,id) {
 }
 
 
-
-
-
- 
-
-    
-
-   
             
     let socialMediaEditId = 0;
     let socialData = []; // Önceki verileri saklamak için bir dizi
@@ -287,15 +272,16 @@ function keyupInputAndSetSkillInputValue(event, name,id) {
         if (socialMedia._id === null) {
             return `
             <div id="socialMediaEditDiv${socialMediaEditId}" data-id="${socialMedia.id}" class="socialMedia-group"><br> 
-            <i class="fa-brands fa-${socialMedia.icon}"></i></a>
+            <i class="fa-brands fa-${socialMedia.icon}"></i>
                 <label for="socialMedia">${socialMedia.title}:</label>
                 <input onkeyup="keyupSocialMediaInputAndSetData(event,'name', '${socialMediaEditId}')" data-id="${socialMedia.id}" maxlength="100" name="socialMediaPlatform" title="formda görünmesini istediğiniz hesabınızı giriniz" type="text" value="${socialMedia.name}" id="socialMediaPlatformInput${socialMediaEditId}">  
-                <button onclick="removeSocialMediaFromEditForm('socialMediaEditDiv${socialMediaEditId}')" type="button" class="deleteSocialMedia">
-                    <img src="delete.png" title="sosyal medyayı sil">
-                </button><br><br>
-                <label for="socialMedia">Sosyal Medya Linki:</label>
+                
+                <label for="socialMedia">Link:</label>
                
                 <input onkeyup="keyupSocialMediaInputAndSetData(event,'link', '${socialMediaEditId}')" data-id="${socialMedia.id}" maxlength="500" name="socialMediaLink" title="sosyal medya linkini giriniz" type="text" value="${socialMedia.link}" id="socialMediaLinkInput${socialMediaEditId}">
+                <button onclick="removeSocialMediaFromEditForm('socialMediaEditDiv${socialMediaEditId}')" type="button" class="deleteSocialMedia">
+                <img src="delete.png" title="sosyal medyayı sil">
+            </button>
             </div>
         `;
 
@@ -305,11 +291,11 @@ function keyupInputAndSetSkillInputValue(event, name,id) {
         <i class="fa-brands fa-${socialMedia.icon}"></i></a>
             <label for="socialMedia">${socialMedia.title}:</label>
             <input onkeyup="keyupSocialMediaInputAndSetData(event,'name', '${socialMediaEditId}')" data-id="${socialMedia._id}" maxlength="100" name="socialMediaPlatform" title="formda görünmesini istediğiniz hesabınızı giriniz" type="text" value="${socialMedia.name}" id="socialMediaPlatformInput${socialMediaEditId}">  
-            <button onclick="removeSocialMediaFromEditForm('socialMediaEditDiv${socialMediaEditId}')" type="button" class="deleteSocialMedia">
-                <img src="delete.png" title="sosyal medyayı sil">
-            </button><br><br>
-            <label for="socialMedia">Sosyal Medya Linki:</label>
-            <input onkeyup="keyupSocialMediaInputAndSetData(event,'link', '${socialMediaEditId}')" data-id="${socialMedia._id}" maxlength="500" name="socialMediaLink" title="sosyal medya linkini giriniz" type="text" value="${socialMedia.link}" id="socialMediaLinkInput${socialMediaEditId}">
+            
+            <label for="socialMedia">Link:</label>
+            <input onkeyup="keyupSocialMediaInputAndSetData(event,'link', '${socialMediaEditId}')" data-id="${socialMedia._id}" maxlength="500" name="socialMediaLink" title="sosyal medya linkini giriniz" type="text" value="${socialMedia.link}" id="socialMediaLinkInput${socialMediaEditId}"><button onclick="removeSocialMediaFromEditForm('socialMediaEditDiv${socialMediaEditId}')" type="button" class="deleteSocialMedia">
+            <img src="delete.png" title="sosyal medyayı sil">
+        </button>
         </div>
     `;
 
@@ -325,12 +311,11 @@ function keyupInputAndSetSkillInputValue(event, name,id) {
             text += `
                 <li title="${socialMedia.title}">
                     <div class="li_wrap">
-                        <div class="icon">
+                       
                             <a href="${socialMedia.link}" target="_blank">
-                            <i class="${socialMedia.icon}"></i></a>
-                        </div>
-                        <div class="name">${socialMedia.name}</div>
-                    </div>
+                            <i class="${socialMedia.icon}"></i>
+                        ${socialMedia.name}</div></a>
+          
                 </li>
             `;
         }
@@ -583,172 +568,158 @@ function ekleEtiket() {
 
 //EDUCATİONS
 let educationEditId = 0;
-let educationData = [];
-
-function setMyEducations(educations) {
-    createEducationElementForShowField(educations);
-    let text = "";
-    for (let education of educations) {
-        text += getEducationEditFormDivField(education);
-    }
-    document.getElementById("educations-edit").innerHTML = text;
-}
-
-function createEducationEditFormDivField() {
-    educationEditId++; 
-    const education= { _id: null, id: educationEditId, section: "", organisation: "", date:""};
-
-    educationData=[...myData.educations];
-    myData.educations.push(education); 
-    const text = getEducationEditFormDivField(education);
-    document.getElementById("educations-edit").innerHTML += text;
-
-    // Mevcut verileri güncelleyin
-    createEducationElementForShowField(myData.educations);
-}
-
-   
-function getEducationEditFormDivField(education) {
-    if (education._id === null) {
-        return `
-        <div class="educations"><br> 
-        
-            <div id="educationEditDiv${educationEditId}" data-id="${education.id}" class="form-group">
-            <hr>
-                <label for="eğitim">Kurum Adı:</label>
-                <input onkeyup="keyupEducationInputAndSetData(event,'organisation',"${education.id}")" id="educationOrganisationInput${educationEditId}" data-id="${education.id}" value="${education.organisation}" maxlength="500" name="egitimAdi" title="eğitim kurumu adını giriniz: " type="text">
-                <button onclick="removeEducationForEditForm('educationEditDiv${educationEditId}')" type="button" class="deleteEducation">
-                    <img src="delete.png" title="eğitimi sil">
-                </button>
-           <br>
-            
-                <label for="egitimAciklamasi">Bölüm Giriniz:</label>
-                <input onkeyup="keyupEducationInputAndSetData(event,'section',"${education.id}")" id="educationSectionInput${educationEditId}" data-id="${education.id}" name="bolumAciklamasi" rows="3" cols="50" value="${education.section}"></input>
-            <br>
-            
-            <label for="egitimBaslama">Eğitime Başlangıç Yılı: </label>
-            <input maxlength="50" name="egitimYillari" title="eğitime başlangıç tarihini giriniz: " type="month">
-            <label for="egitimBitis">Eğitim Bitiş Yılı: </label>
-            <input id="egitimBitis" class="egitimBitis" maxlength="50" name="egitimYillari" title="eğitim bitis tarihini giriniz: " type="month">
-            <br>
-            <input id="halaDevam" class="halaDevam" type="checkbox"><label>halen devam ediyorum</label>
-            
-            
-       
-        </div>
-    `;
-    } else {
-        return  `
-        <div class="educations"><br> 
-        
-            <div id="educationEditDiv${educationEditId}" data-id="${education._id}" class="form-group">
-            <hr>
-                <label for="eğitim">Kurum Adı:</label>
-                <input onkeyup="keyupEducationInputAndSetData(event,'organisation',"${education._id}")" id="educationOrganisationInput${educationEditId}" data-id="${education._id}" value="${education.organisation}" maxlength="500" name="egitimAdi" title="eğitim kurumu adını giriniz: " type="text">
-                <button onclick="removeEducationForEditForm('educationEditDiv${educationEditId}')" type="button" class="deleteEducation">
-                    <img src="delete.png" title="eğitimi sil">
-                </button>
-           <br>
-            
-                <label for="egitimAciklamasi">Bölüm Giriniz:</label>
-                <input onkeyup="keyupEducationInputAndSetData(event,'section',"${education._id}")" id="educationSectionInput${educationEditId}" data-id="${education._id}" name="bolumAciklamasi" rows="3" cols="50" value="${education.section}"></input>
-            <br>
-            
-            <label for="egitimBaslama">Eğitime Başlangıç Yılı: </label>
-            <input maxlength="50" name="egitimYillari" title="eğitime başlangıç tarihini giriniz: " type="month">
-            <label for="egitimBitis">Eğitim Bitiş Yılı: </label>
-            <input id="egitimBitis" class="egitimBitis" maxlength="50" name="egitimYillari" title="eğitim bitis tarihini giriniz: " type="month">
-            <br>
-            <input id="halaDevam" class="halaDevam" type="checkbox"><label>halen devam ediyorum</label>
-            
-            
-       
-        </div>
-    `;
-    }
-}
-
 
 function createEducationElementForShowField(educations) {
     let text = "";
-
+    
     for (let education of educations) {
-        
         text += `
         <li>
-        <div class="li_wrap">
-        <div class="date">${education.date}</div>
-        <div class="info">
-    <p class="info_title">${education.section}</p> 
-    <p class="info_com">${education.organisation}</p>  
-    <p class="info_cont">      
-    </p>
-        </div>
-        </div>
-    </li>
+            <div class="li_wrap">
+                <div class="date">${education.date}</div>
+                <div class="info">
+                    <p class="info_title">${education.section}</p> 
+                    <p class="info_com">${education.organisation}</p>  
+                    <p class="info_cont"></p>
+                </div>
+            </div>
+        </li>
         `;
     }
 
     // HTML sayfanızı güncelleyin
-    document.getElementById("educations").innerHTML = text;
+    document.getElementById("educations").innerHTML = `<ul>${text}</ul>`;
 }
 
- 
+function assignEducationId(education) {
+    education._id = Date.now(); // Örneğin, tarih ve saat kullanarak benzersiz bir kimlik oluşturabilirsiniz.
+    return education;
+}
+
+
+function getEducationEditFormDivField(education) {
+    education = assignEducationId(education); 
+    return `
+        <div class="educations"><br> 
+       
+            <div id="educationEditDiv${education._id}" data-id="${education._id}" class="form-group">
+            <hr>
+                <label for="egitim">Kurum Adı:</label>
+                <input onkeyup="keyupInputAndSetEducationInputValue(event,'organisation','${education._id}')" id="educationNameInput${education._id}" data-id="${education._id}" value="${education.organisation}" maxlength="500" name="kurumAdi" title="kurum adını giriniz: " type="text">
+                <button onclick="removeEducationForEditForm('educationEditDiv${education._id}')" type="button" class="deleteEducation">
+                    <img src="delete.png" title="kurumu sil">
+                </button>
+            <br>
+            
+                <label for="educationAciklamasi">Bölüm:</label>
+                <input type="text" onkeyup="keyupInputAndSetEducationInputValue(event,'section','${education._id}')" id="educationSectionInput${education._id}" data-id="${education._id}" value="${education.section}" name="bolumAciklamasi" rows="3" cols="50" >
+            <br>
+                <label for="startDate">Başlangıç-Bitiş Tarihi: </label>          
+                <input onkeyup="keyupInputAndSetEducationInputValue(event,'date','${education._id}')"  id="educationStartDateInput${education._id}" data-id="${education._id}" value="${education.date}" id="startDate"  maxlength="200" name="startDate" title="(Örnek Format: MM.yyyy-MM.yyyy)" type="text">    
+                
+             
+               
+        </div>
+    `;
+    }
+
+
+
+function createEducationEditFormDivField() {
+    educationEditId++; 
+    const education = { _id: null, id: educationEditId, name: "", tech: "", description: "" };
+
+    // Veriyi saklamadan önce mevcut veriyi kopyalayın
+    myData.educations.push(education);
+
+    // Düzenleme formunu oluşturun ve sayfaya ekleyin
+    const text = getEducationEditFormDivField(education);
+    document.getElementById("educations-edit").innerHTML += text;
+
+  
+    createEducationElementForShowField(myData.educations);
+}
+
+
+function setMyEducations(educations) {
+    createEducationElementForShowField(educations);
+
+    let educationText = "";
+
+    for (let education of educations) {
+        educationEditId++; 
+        educationText += getEducationEditFormDivField(education);
+    }
+
+  
+    educationText = educationText || "";
+
+    document.getElementById("educations-edit").innerHTML = educationText;
+}
+
 function removeEducationForEditForm(elementId) {
     const element = document.getElementById(elementId);
     if (element === null) return;
 
-    const id = element.dataset["id"];
+    const educationId = element.dataset["id"];
 
-    const index=myData.educations.findIndex(p => p.id == id || p._id == id);
-    myData.educations.splice(index,1);
+    
+    const educationIdNumber = parseInt(educationId);
 
-   
-    // Elementi kaldırın
-    element.remove();
+    const index = myData.educations.findIndex(p => p.id === educationIdNumber || p._id === educationIdNumber);
 
-    // Mevcut verileri güncelleyin
-    createEducationElementForShowField(myData.educations);
+    if (index !== -1) {
+       
+        myData.educations.splice(index, 1);
+        element.remove();
+        createEducationElementForShowField(myData.educations);
+    }
 }
 
-
-
-function keyupEducationInputAndSetData(event, name, id) {
+function keyupInputAndSetEducationInputValue(event, name,educationId) {
     const element = event.target;
     
-    // Veriyi myData.socialMedias dizisinde güncelleyin
-    const index = myData.educations.findIndex(p => p.id == id || p._id == id);
-    if (name === "section") {
-        myData.educations[index].section = element.value;
-    } else if (name === "organisation") {
-        myData.educations[index].organisation = element.value;
-    }else if (name === "date") {
-        myData.educations[index].date = element.value;
+    const index = myData.educations.findIndex(p => p.id == educationId || p._id == educationId);
+    
+    if (index !== -1) {
+        if (name === "section") {
+            myData.educations[index].section = element.value;
+        } else if (name === "organisation") {
+            myData.educations[index].organisation = element.value;
+        } else if (name === "date") {
+            myData.educations[index].date = element.value;
+        }
 
-    createEducationElementForShowField(myData.educations);
+        createEducationElementForShowField(myData.educations);
+    }
 }
-}
 
-document.addEventListener("DOMContentLoaded", function () {
-    // "Hala Devam Ediyorum" checkbox ve "Eğitim Bitiş Yılı" input alanlarını tanımlayın
-    const halaDevamCheckboxes = document.querySelectorAll(".halaDevam");
-    const egitimBitisInputs = document.querySelectorAll(".egitimBitis");
 
-    // "Hala Devam Ediyorum" checkbox değişikliğini dinle ve kodu tetikle
-    halaDevamCheckboxes.forEach(function (checkbox) {
-        checkbox.addEventListener("change", function () {
-            const egitimBitisInput = this.closest(".educations").querySelector(".egitimBitis");
+function updateEducationElements() {
+    const educationElements = document.querySelectorAll('.educations-edit .education'); 
+        educationElements.forEach(element => {
+        const id = element.dataset.id;
+        const education = myData.educations.find(p => p.id == id || p._id == id);
 
-            if (this.checked) {
-                // Checkbox seçili ise "Eğitim Bitiş Yılı" alanını devre dışı bırak
-                egitimBitisInput.disabled = true;
-            } else {
-                // Checkbox seçili değilse "Eğitim Bitiş Yılı" alanını etkinleştir
-                egitimBitisInput.disabled = false;
+        if (education) {
+            const organisationInput = element.querySelector('[name="kurumAdi"]');
+            const sectionInput = element.querySelector('[name="bolumAciklamasi"]');
+            const dateInput = element.querySelector('[name="endDate"]');
+
+            if (dateInput) {
+                dateInput.value = education.date;
             }
-        });
+
+            if (sectionInput) {
+                sectionInput.value = education.section;
+            }
+
+            if (organisationInput) {
+                organisationInput.value = education.organisation;
+            }
+        }
     });
-});
+}
 
 //EXPERIENCES
 
@@ -805,12 +776,9 @@ function getExperienceEditFormDivField(experience) {
                 <input onkeyup="keyupInputAndSetExperienceInputValue(event,'title','${experience._id}')" id="experienceTitleInput${experience._id}" data-id="${experience._id}" name="unvanAciklamasi" rows="3" cols="50" value="${experience.title}">
             <br>
             
-            <label for="firmaBaslama">Firma Başlangıç Yılı: </label>
-                <input maxlength="50" name="firmaYillari" title="firmaya başlangıç tarihini giriniz: " type="month">
-                <label for="firmaBitis${experience._id}">Firma Çalışma Bitiş Yılı: </label>
-                <input id="firmaBitis${experience._id}" class="firmaBitis" maxlength="50" name="firmaYillari" title="firma bitis tarihini giriniz: " type="month">
-                <br>
-                <input id="firmaDevam${experience._id}" class="firmaDevam" type="checkbox"><label>halen çalışıyorum</label>
+            <label for="startDate">Firma Başlangıç-Bitiş Tarihi: </label>          
+                <input onkeyup="keyupInputAndSetExperienceInputValue(event,'date','${experience._id}')"  id="experienceStartDateInput${experience._id}" data-id="${experience._id}" value="${experience.date}" id="startDate"  maxlength="200" name="startDate" title="(Örnek Format: MM.yyyy-MM.yyyy)" type="text">    
+                
                
         </div>
     `;
@@ -888,7 +856,7 @@ function keyupInputAndSetExperienceInputValue(event, name, experienceId) {
 
 
 function updateExperienceElements() {
-    const experienceElements = document.querySelectorAll('.experiences-edit .experience'); 
+    const experienceElements = document.querySelectorAll('.experiences-edit .experience');
 
     experienceElements.forEach(element => {
         const id = element.dataset.id;
@@ -897,18 +865,18 @@ function updateExperienceElements() {
         if (experience) {
             const companyInput = element.querySelector('[name="firmaAdi"]');
             const titleInput = element.querySelector('[name="unvanAciklamasi"]');
-            const dateInput = element.querySelector('[name="date"]');
+            const dateInput = element.querySelector('[name="startDate"]');
 
             if (companyInput) {
-                companyInput.value = experience.name;
+                companyInput.value = experience.company;
             }
 
             if (titleInput) {
-                titleInput.value = experience.description;
+                titleInput.value = experience.title;
             }
 
             if (dateInput) {
-                dateInput.value = experience.tech;
+                dateInput.value = experience.date;
             }
         }
     });
@@ -939,7 +907,19 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
+function showAvatarPreview(inputId, event) {
+    const avatarImage = document.getElementById('avatar');
+    const fileInput = event.target;
 
+    if (fileInput.files && fileInput.files[0]) {
+        const reader = new FileReader();
 
+        reader.onload = function (e) {
+            avatarImage.src = e.target.result;
+        };
+
+        reader.readAsDataURL(fileInput.files[0]);
+    }
+}
 
 

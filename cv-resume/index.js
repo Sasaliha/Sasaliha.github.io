@@ -14,8 +14,9 @@ let person={
     phone:"05347992257",
     email:"saliha-acikgoz@hotmail.com",
     address:"Sancaktepe/İstanbul",
-    avatar:"saliha.png",
+    avatar:"profile.png",
     aboutMe: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste non voluptatibus, dolorem at perferendis quasi ipsam dignissimos quibusdam eveniet temporibus.`
+
 }
 
 let skills=[
@@ -184,7 +185,10 @@ app.post("/api/set", (req,res)=>{
 
 })
 
+const port=process.env.PORT || 5000;
+app.listen(port,()=>console.log("Uygulama http://localhost:5000 üzerinden ayakta"))
+
 //mevcut apimizin hangi portta calısacgını belirttik
-app.listen(5000,()=> console.log("Uygulama http://localhost:5000 üzerinden ayakta"));  //()=> eger uygulamam calısıyorsa
+
 
 

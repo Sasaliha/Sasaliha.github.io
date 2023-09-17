@@ -83,6 +83,10 @@ body{
 .social-medias{
     display: flex;
     flex-direction: column;
+    margin: 0px;
+    gap:10px;
+ 
+ 
 }
 
 .social-medias .name{
@@ -553,7 +557,7 @@ border-radius: 15px;
 cursor: pointer; 
 }
 
-.deleteExp{
+.deleteExperience{
     position: relative;
 
     margin: 5px; 
@@ -644,7 +648,7 @@ margin-left: 5px;
 
    }
 
-.btnExp:hover, .btnProject:hover, .btnSkills:hover{
+.btnExperience:hover, .btnProject:hover, .btnSkills:hover, .btnEducations:hover, .btnSocialMedias:hover{
 background-color: #f00;
 }
 
