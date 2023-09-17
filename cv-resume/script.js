@@ -413,12 +413,10 @@ function getProjectEditFormDivField(project) {
             
                 <label for="teknolojiler">Kullanılan Teknolojiler</label>
                
-                <input onkeyup="keyupInputAndSetProjectInputValue(event,'tech','${project._id}')" id="teknolojiEkle"  maxlength="200" name="teknolojiler" title="Kullandığınız teknolojileri giriniz" type="text">
+                <input onkeyup="keyupInputAndSetProjectInputValue(event,'tech','${project._id}')" id="projectTechInput${project._id}" data-id="${project._id}" id="teknolojiEkle" value="${project.tech}" maxlength="200" name="teknolojiler" title="Kullandığınız teknolojileri giriniz" type="text">
 
-                <button type="button" class="etiketEkle" onclick="ekleEtiket('projectEditDiv${project._id}')">Ekle</button><br>
             
-                <label for="secilenTeknolojiler" data-id="${project._id}" ><i>Eklenen Teknolojiler:</i></label>${project.tech}
-                <div id="etiketler" ></div><br><br>
+               
         </div>
     `;
     }
