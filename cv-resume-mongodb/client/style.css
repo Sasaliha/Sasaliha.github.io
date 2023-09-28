@@ -19,9 +19,8 @@ body{
     background-color:#cbc4fa;
     color:rgb(16, 15, 15);
     margin-top: -30px;
-    position: fixed;
- 
-    }
+
+}
 
 
 
@@ -415,7 +414,7 @@ body{
  }
  .btn:hover{
    opacity: 0.50;
-    
+     
   }
 
 
@@ -429,17 +428,17 @@ body{
 .editForm{
     display: none;
     float:left;
-    position: absolute;
+    position:absolute;
     width: 50%;
     bottom: 0;
     top:35px;
 }
 
 .main{
-    
-    width:100%;
-    display: flex;
-    justify-content: center;
+   display: flex;
+   position:relative;
+   
+
 }
 
 

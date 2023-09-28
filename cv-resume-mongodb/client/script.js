@@ -674,48 +674,50 @@ function getExperienceEditFormDivField(experience) {
     return `
         <div class="experiences"><br> 
        
-            <div id="experience${experienceEditId}" data-id="${experience.id}" class="form-group">
+            <div id="experienceEditDiv${experienceEditId}" data-id="${experience.id}" class="form-group">
             <hr>
                 <label for="company">Firma Adı:</label>
-                <input onkeyup="keyupInputAndSetExperienceInputValue(event, 'company', 'experiences')" id="experienceInput${experienceEditId}" data-id="${experience.id}" value="${experience.company}" maxlength="500" name="firmaAdi" title="firma adını giriniz: " type="text">
+                <input onkeyup="keyupInputAndSetExperienceInputValue(event, 'company', 'experiences')" id="experienceEditDiv${experienceEditId}" data-id="${experience.id}" value="${experience.company}" maxlength="500" name="firmaAdi" title="firma adını giriniz: " type="text">
 
-                <button onclick="removeExperienceForEditForm('experienceInput${experienceEditId}')" type="button" class="deleteExperience">
+                <button onclick="removeExperienceForEditForm('experienceEditDiv${experienceEditId}')" type="button" class="deleteExperience">
                     <img src="delete.png" title="firmayı sil">
                 </button>
             <br>
             
                 <label for="unvanAciklamasi">Unvan:</label>
-                <input onkeyup="keyupInputAndSetExperienceInputValue(event,'title','experiences')" id="experienceInput${experienceEditId}" data-id="${experience.id}" name="unvanAciklamasi" rows="3" cols="50" value="${experience.title}">
+                <input onkeyup="keyupInputAndSetExperienceInputValue(event,'title','experiences')" id="experienceEditDiv${experienceEditId}" data-id="${experience.id}" name="unvanAciklamasi" rows="3" cols="50" value="${experience.title}">
             <br>
             
             <label for="startDate">Firma Başlangıç-Bitiş Tarihi: </label>          
-                <input onkeyup="keyupInputAndSetExperienceInputValue(event,'date','experiences')"  id="experienceInput${experienceEditId}" data-id="${experience.id}" value="${experience.date}" id="startDate"  maxlength="200" name="startDate" title="(Örnek Format: MM.yyyy-MM.yyyy)" type="text">    
+                <input onkeyup="keyupInputAndSetExperienceInputValue(event,'date','experiences')"  id="experienceEditDiv${experienceEditId}" data-id="${experience.id}" value="${experience.date}" id="startDate"  maxlength="200" name="startDate" title="(Örnek Format: MM.yyyy-MM.yyyy)" type="text">    
                 
                
+        </div>
         </div>
     `;
 }else{
     return `
     <div class="experiences"><br> 
        
-    <div id="experience${experienceEditId}" data-id="${experience._id}" class="form-group">
+    <div id="experienceEditDiv${experienceEditId}" data-id="${experience._id}" class="form-group">
     <hr>
         <label for="company">Firma Adı:</label>
-        <input onkeyup="keyupInputAndSetExperienceInputValue(event, 'company', 'experiences')" id="experienceInput${experienceEditId}" data-id="${experience._id}" value="${experience.company}" maxlength="500" name="firmaAdi" title="firma adını giriniz: " type="text">
+        <input onkeyup="keyupInputAndSetExperienceInputValue(event, 'company', 'experiences')" id="experienceEditDiv${experienceEditId}" data-id="${experience._id}" value="${experience.company}" maxlength="500" name="firmaAdi" title="firma adını giriniz: " type="text">
 
-        <button onclick="removeExperienceForEditForm('experienceInput${experienceEditId}')" type="button" class="deleteExperience">
+        <button onclick="removeExperienceForEditForm('experienceEditDiv${experienceEditId}')" type="button" class="deleteExperience">
             <img src="delete.png" title="firmayı sil">
         </button>
     <br>
     
         <label for="unvanAciklamasi">Unvan:</label>
-        <input onkeyup="keyupInputAndSetExperienceInputValue(event,'title','experiences')" id="experienceInput${experienceEditId}" data-id="${experience._id}" name="unvanAciklamasi" rows="3" cols="50" value="${experience.title}">
+        <input onkeyup="keyupInputAndSetExperienceInputValue(event,'title','experiences')" id="experienceEditDiv${experienceEditId}" data-id="${experience._id}" name="unvanAciklamasi" rows="3" cols="50" value="${experience.title}">
     <br>
     
     <label for="startDate">Firma Başlangıç-Bitiş Tarihi: </label>          
-        <input onkeyup="keyupInputAndSetExperienceInputValue(event,'date','experiences')"  id="experienceInput${experienceEditId}" data-id="${experience._id}" value="${experience.date}" id="startDate"  maxlength="200" name="startDate" title="(Örnek Format: MM.yyyy-MM.yyyy)" type="text">    
+        <input onkeyup="keyupInputAndSetExperienceInputValue(event,'date','experiences')"  id="experienceEditDiv${experienceEditId}" data-id="${experience._id}" value="${experience.date}" id="startDate"  maxlength="200" name="startDate" title="(Örnek Format: MM.yyyy-MM.yyyy)" type="text">    
         
        
+</div>
 </div>
     `;
 
