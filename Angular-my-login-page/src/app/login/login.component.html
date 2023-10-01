@@ -1,0 +1,45 @@
+<div class="d-flex justify-content-center align-items-center" style="height: 100vh;">
+<div class="col-xl-6 col-12">
+    <div class="card">
+        <div class="card-header">
+            <h1>Login Page</h1>
+            <p>Please enter your login information</p>
+        </div>
+        <div class="card-body ">
+           <form #loginForm="ngForm" (ngSubmit)="signIn(loginForm)" autocomplete="off">
+            <div class="form-group ">
+                <label for="userNameorEmail">Username or Email </label>
+                <input validate required minlength="3"  type="text" ngModel name="userNameOrEmail" id="userNameOrEmail" class="form-control">
+                
+                <div class="invalid-feedback"> 
+                    Username or email must be valid
+                </div>
+            </div>
+            <div class="form-group mt-1">
+                <label for="password">Password</label>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">
+                        <i (click)="ShowOrHidePassword(password)" *ngIf="!isShowPassword" class="fa-solid fa-eye"></i>
+                        <i (click)="ShowOrHidePassword(password)" *ngIf="isShowPassword" class="fa-solid fa-eye-slash"></i>
+                    </span>
+                    <input required (blur)="isPasswordFocus=false" (keyup)="checkRegexPatternForPassword(password)" (focus)="isPasswordFocus=true" #password ngModel name="password" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()_+\-=\[\]{};:'\\|,.<>\/?])(?=.*[0-9]).{8,}$" type="password" class="form-control" placeholder="*******">
+                  </div>
+                  <ul class="password-ul" [ngStyle]="{'display' : isPasswordFocus ? 'block' :'none'}">
+                    <li class="pw-error" id="minSixCharacter">Min 6 Character</li>
+                    <li class="pw-error" id=upperLetter>Upper Character</li>
+                    <li class="pw-error" id=lowerLetter>Lower Character</li>
+                    <li class="pw-error" id=specialLetter>Special Character</li>
+                    <li class="pw-error" id=numericLetter>Numeric Character</li>
+                  </ul>
+            </div>
+            <div class="form-group mt-1 ">
+                <button type="submit" class="btn btn-primary w-100">
+                    <i class="fa-solid fa-lock fa-bounce"></i>
+                    Sign In</button>
+            </div>
+        </form> 
+        </div>
+    </div>
+</div>
+
+</div>
